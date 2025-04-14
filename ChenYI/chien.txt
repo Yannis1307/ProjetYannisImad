@@ -1,0 +1,141 @@
+Chiens
+
+    Animal 1
+
+        Numéro d'identification : 2001
+
+        Nom : Max
+
+        Espèce : Chien
+
+        Année de naissance : 2018
+
+        Poids : 30 kg
+
+        Commentaire : Chien affectueux, toujours prêt à protéger son maître.
+
+    Animal 2
+
+        Numéro d'identification : 2002
+
+        Nom : Bella
+
+        Espèce : Chien
+
+        Année de naissance : 2016
+
+        Poids : 25 kg
+
+        Commentaire : Chienne douce, aime courir dans les champs et jouer avec les enfants.
+
+    Animal 3
+
+        Numéro d'identification : 2003
+
+        Nom : Rocky
+
+        Espèce : Chien
+
+        Année de naissance : 2020
+
+        Poids : 40 kg
+
+        Commentaire : Chien robuste et protecteur, toujours attentif à son environnement.
+
+    Animal 4
+
+        Numéro d'identification : 2004
+
+        Nom : Luna
+
+        Espèce : Chien
+
+        Année de naissance : 2019
+
+        Poids : 20 kg
+
+        Commentaire : Chienne calme et observatrice, adore les promenades tranquilles.
+
+    Animal 5
+
+        Numéro d'identification : 2005
+
+        Nom : Charlie
+
+        Espèce : Chien
+
+        Année de naissance : 2021
+
+        Poids : 28 kg
+
+        Commentaire : Très énergique, Charlie aime courir dans les parcs.
+
+    Animal 6
+
+        Numéro d'identification : 2006
+
+        Nom : Zeus
+
+        Espèce : Chien
+
+        Année de naissance : 2018
+
+        Poids : 35 kg
+
+        Commentaire : Chien très protecteur, il est toujours en alerte.
+
+    Animal 7
+
+        Numéro d'identification : 2007
+
+        Nom : Daisy
+
+        Espèce : Chien
+
+        Année de naissance : 2022
+
+        Poids : 18 kg
+
+        Commentaire : Chienne joyeuse et curieuse, adore explorer les endroits inconnus.
+
+    Animal 8
+
+        Numéro d'identification : 2008
+
+        Nom : Teddy
+
+        Espèce : Chien
+
+        Année de naissance : 2017
+
+        Poids : 24 kg
+
+        Commentaire : Teddy est très câlin et cherche constamment l'attention de ses propriétaires.
+
+    Animal 9
+
+        Numéro d'identification : 2009
+
+        Nom : Roxy
+
+        Espèce : Chien
+
+        Année de naissance : 2020
+
+        Poids : 32 kg
+
+        Commentaire : Roxy est rapide et aime courir dans les champs.
+
+    Animal 10
+
+        Numéro d'identification : 2010
+
+        Nom : Milo
+
+        Espèce : Chien
+
+        Année de naissance : 2019
+
+        Poids : 29 kg
+
+        Commentaire : Très amical et sociable, Milo adore être en compagnie d'autres animaux.
