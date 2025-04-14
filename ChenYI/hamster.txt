@@ -1,0 +1,141 @@
+Hamsters
+
+    Animal 1
+
+        Numéro d'identification : 4001
+
+        Nom : Biscuit
+
+        Espèce : Hamster
+
+        Année de naissance : 2023
+
+        Poids : 120 g
+
+        Commentaire : Hamster tout petit, très énergique et adore courir dans sa roue.
+
+    Animal 2
+
+        Numéro d'identification : 4002
+
+        Nom : Nino
+
+        Espèce : Hamster
+
+        Année de naissance : 2022
+
+        Poids : 130 g
+
+        Commentaire : Nino est un hamster curieux, toujours en quête de nouvelles explorations dans sa cage.
+
+    Animal 3
+
+        Numéro d'identification : 4003
+
+        Nom : Gogo
+
+        Espèce : Hamster
+
+        Année de naissance : 2021
+
+        Poids : 140 g
+
+        Commentaire : Très rapide, Gogo adore se cacher dans les coins sombres de sa cage.
+
+    Animal 4
+
+        Numéro d'identification : 4004
+
+        Nom : Popcorn
+
+        Espèce : Hamster
+
+        Année de naissance : 2022
+
+        Poids : 110 g
+
+        Commentaire : Petit hamster timide, il aime grignoter ses graines en cachette.
+
+    Animal 5
+
+        Numéro d'identification : 4005
+
+        Nom : Hazel
+
+        Espèce : Hamster
+
+        Année de naissance : 2020
+
+        Poids : 160 g
+
+        Commentaire : Hazel est un hamster calme et observateur, il adore se rouler en boule pour dormir.
+
+    Animal 6
+
+        Numéro d'identification : 4006
+
+        Nom : Charlie
+
+        Espèce : Hamster
+
+        Année de naissance : 2021
+
+        Poids : 125 g
+
+        Commentaire : Charlie est un hamster agile, toujours prêt à grimper et explorer sa cage.
+
+    Animal 7
+
+        Numéro d'identification : 4007
+
+        Nom : Léo
+
+        Espèce : Hamster
+
+        Année de naissance : 2022
+
+        Poids : 135 g
+
+        Commentaire : Léo aime jouer dans sa roue et se cacher dans les tunnels.
+
+    Animal 8
+
+        Numéro d'identification : 4008
+
+        Nom : Lou
+
+        Espèce : Hamster
+
+        Année de naissance : 2020
+
+        Poids : 145 g
+
+        Commentaire : Lou est un hamster actif, il aime courir dans sa roue et s'aventurer partout dans sa cage.
+
+    Animal 9
+
+        Numéro d'identification : 4009
+
+        Nom : Titi
+
+        Espèce : Hamster
+
+        Année de naissance : 2023
+
+        Poids : 120 g
+
+        Commentaire : Titi adore grignoter ses légumes et explorer tous les coins de sa cage.
+
+    Animal 10
+
+        Numéro d'identification : 4010
+
+        Nom : Ziggy
+
+        Espèce : Hamster
+
+        Année de naissance : 2021
+
+        Poids : 130 g
+
+        Commentaire : Ziggy est un hamster vif et curieux, toujours à la recherche de nouvelles distractions.

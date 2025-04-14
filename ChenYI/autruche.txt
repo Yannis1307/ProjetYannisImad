@@ -1,0 +1,141 @@
+Autruches
+
+    Animal 1
+
+        Numéro d'identification : 5001
+
+        Nom : Flash
+
+        Espèce : Autruche
+
+        Année de naissance : 2021
+
+        Poids : 110 kg
+
+        Commentaire : Autruche vive, aime courir à grande vitesse et se déplacer dans de vastes espaces.
+
+    Animal 2
+
+        Numéro d'identification : 5002
+
+        Nom : Sahara
+
+        Espèce : Autruche
+
+        Année de naissance : 2020
+
+        Poids : 95 kg
+
+        Commentaire : Calme et majestueuse, Sahara aime se reposer sous l'ombre d'arbres tout en observant son environnement.
+
+    Animal 3
+
+        Numéro d'identification : 5003
+
+        Nom : Zulu
+
+        Espèce : Autruche
+
+        Année de naissance : 2022
+
+        Poids : 120 kg
+
+        Commentaire : Très curieuse, Zulu adore explorer son enclos et se mélanger avec les autres animaux.
+
+    Animal 4
+
+        Numéro d'identification : 5004
+
+        Nom : Tango
+
+        Espèce : Autruche
+
+        Année de naissance : 2019
+
+        Poids : 105 kg
+
+        Commentaire : Autruche énergique, Tango aime courir et a un caractère bien affirmé.
+
+    Animal 5
+
+        Numéro d'identification : 5005
+
+        Nom : Cactus
+
+        Espèce : Autruche
+
+        Année de naissance : 2021
+
+        Poids : 98 kg
+
+        Commentaire : Cactus est un peu timide, mais lorsqu'il se sent en sécurité, il montre son côté sociable.
+
+    Animal 6
+
+        Numéro d'identification : 5006
+
+        Nom : Mistral
+
+        Espèce : Autruche
+
+        Année de naissance : 2020
+
+        Poids : 110 kg
+
+        Commentaire : Mistral est une autruche rapide et dynamique, elle adore courir sur de longues distances.
+
+    Animal 7
+
+        Numéro d'identification : 5007
+
+        Nom : Coco
+
+        Espèce : Autruche
+
+        Année de naissance : 2018
+
+        Poids : 115 kg
+
+        Commentaire : Très affectueuse, Coco aime passer du temps à interagir avec les soigneurs et les visiteurs.
+
+    Animal 8
+
+        Numéro d'identification : 5008
+
+        Nom : Atlas
+
+        Espèce : Autruche
+
+        Année de naissance : 2022
+
+        Poids : 125 kg
+
+        Commentaire : Atlas est une autruche robuste et imposante, toujours prête à relever les défis de son habitat.
+
+    Animal 9
+
+        Numéro d'identification : 5009
+
+        Nom : Luna
+
+        Espèce : Autruche
+
+        Année de naissance : 2021
+
+        Poids : 100 kg
+
+        Commentaire : Luna est une autruche curieuse et indépendante, elle aime se promener seule dans son enclos.
+
+    Animal 10
+
+        Numéro d'identification : 5010
+
+        Nom : Rocky
+
+        Espèce : Autruche
+
+        Année de naissance : 2019
+
+        Poids : 110 kg
+
+        Commentaire : Rocky est une autruche fière et observatrice, toujours en quête de nouveaux territoires à explorer.
