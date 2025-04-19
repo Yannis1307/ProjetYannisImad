@@ -1,3 +1,8 @@
+#ifndef ANIMAL_H
+#define ANIMAL_H
+#define TAILLE_NOM 50
+#define TAILLE_COMMENTAIRE 256
+
 typedef struct {
     int num;
     char nom[100];
