@@ -4,4 +4,4 @@
 
 
 const char* ESPECES[NB_ESPECES] = {"Chien", "Chat", "Hamster", "Autruche","Tortue"};
-const char* FICHIERS[NB_ESPECES] = {"ChenYI/chiens.txt", "ChenYI/chats.txt", "ChenYI/hamsters.txt", "ChenYI/autruches.txt"};
+const char* FICHIERS[NB_ESPECES] = {"ChenYI/chiens.txt", "ChenYI/chats.txt", "ChenYI/hamsters.txt", "ChenYI/autruches.txt","ChenYI/tortue.txt"};
