@@ -1,5 +1,5 @@
-#define TAILLE_NOM 50
-#define TAILLE_COMMENTAIRE 256
+#define TAILLE_NOM 100
+#define TAILLE_COMMENTAIRE 100
 
 typedef struct {
     int num;
