@@ -1,6 +1,4 @@
 //structure des especes presentes;
-#ifndef ESPECE_H
-#define ESPECE_H
 #define NB_ESPECES 4
 #define MAX_ANIMAUX 50
 
