@@ -1,5 +1,3 @@
-#ifndef ANIMAL_H
-#define ANIMAL_H
 #define TAILLE_NOM 50
 #define TAILLE_COMMENTAIRE 256
 
