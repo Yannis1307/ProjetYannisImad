@@ -1,10 +1,10 @@
-4001;Biscuit;Hamster;2023;120;Hamster tout petit, très énergique et adore courir dans sa roue.
-4002;Nino;Hamster;2022;130;Nino est un hamster curieux, toujours en quête de nouvelles explorations dans sa cage.
-4003;Gogo;Hamster;2021;140;Très rapide, Gogo adore se cacher dans les coins sombres de sa cage.
-4004;Popcorn;Hamster;2022;110;Petit hamster timide, il aime grignoter ses graines en cachette.
-4005;Hazel;Hamster;2020;160;Hazel est un hamster calme et observateur, il adore se rouler en boule pour dormir.
-4006;Charlie;Hamster;2021;125;Charlie est un hamster agile, toujours prêt à grimper et explorer sa cage.
-4007;Léo;Hamster;2022;135;Léo aime jouer dans sa roue et se cacher dans les tunnels.
-4008;Lou;Hamster;2020;145;Lou est un hamster actif, il aime courir dans sa roue et s'aventurer partout dans sa cage.
-4009;Titi;Hamster;2023;120;Titi adore grignoter ses légumes et explorer tous les coins de sa cage.
-4010;Ziggy;Hamster;2021;130;Ziggy est un hamster vif et curieux, toujours à la recherche de nouvelles distractions.
+4001 Biscuit Hamster 2023 120 Hamster tout petit très énergique et adore courir dans sa roue.
+4002 Nino Hamster 2022 130 Nino est un hamster curieux toujours en quête de nouvelles explorations dans sa cage.
+4003 Gogo Hamster 2021 140 Très rapide Gogo adore se cacher dans les coins sombres de sa cage.
+4004 Popcorn Hamster 2022 110 Petit hamster timide il aime grignoter ses graines en cachette.
+4005 Hazel Hamster 2020 160 Hazel est un hamster calme et observateur il adore se rouler en boule pour dormir.
+4006 Charlie Hamster 2021 125 Charlie est un hamster agile toujours prêt à grimper et explorer sa cage.
+4007 Léo Hamster 2022 135 Léo aime jouer dans sa roue et se cacher dans les tunnels.
+4008 Lou Hamster 2020 145 Lou est un hamster actif il aime courir dans sa roue et s'aventurer partout dans sa cage.
+4009 Titi Hamster 2023 120 Titi adore grignoter ses légumes et explorer tous les coins de sa cage.
+4010 Ziggy Hamster 2021 130 Ziggy est un hamster vif et curieux toujours à la recherche de nouvelles distractions.

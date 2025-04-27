@@ -1,10 +1,10 @@
-3001;Choupette;Chat;2015;3;Chat calme, adore se prélasser près des fenêtres et observer les oiseaux.
-3002;Pépita;Chat;2019;4.2;Très indépendante, Pépita aime avoir son espace mais est affectueuse quand elle le souhaite.
-3003;Pistache;Chat;2022;2.5;Chaton très curieux, toujours en train de jouer avec tout ce qui bouge.
-3004;Moka;Chat;2021;3.7;Très affectueux, Moka adore dormir sur les genoux de ses propriétaires.
-3005;Nimbus;Chat;2020;4.3;Nimbus est un peu timide, mais il adore jouer à cache-cache et se cacher sous les lits.
-3006;Solène;Chat;2018;3.4;Chat très calme, elle préfère rester tranquille dans des endroits chauds et confortables.
-3007;Zéphyr;Chat;2019;5;Zéphyr est un chat curieux et énergique, toujours à la recherche de nouvelles aventures.
-3008;Câline;Chat;2021;3.6;Câline adore se blottir contre ses propriétaires, toujours en quête de tendresse.
-3009;Vénus;Chat;2017;4.8;Chat très intelligent, Vénus sait ouvrir les portes et se débrouille pour aller dans des endroits interdits.
-3010;Doudou;Chat;2022;3;Très câlin et affectueux, Doudou aime dormir près des humains et jouer avec des ficelles.
+3001 Choupette Chat 2015 3 Chat calme adore se prélasser près des fenêtres et observer les oiseaux.
+3002 Pépita Chat 2019 4.2 Très indépendante Pépita aime avoir son espace mais est affectueuse quand elle le souhaite.
+3003 Pistache Chat 2022 2.5 Chaton très curieux toujours en train de jouer avec tout ce qui bouge.
+3004 Moka Chat 2021 3.7 Très affectueux Moka adore dormir sur les genoux de ses propriétaires.
+3005 Nimbus Chat 2020 4.3 Nimbus est un peu timide mais il adore jouer à cache-cache et se cacher sous les lits.
+3006 Solène Chat 2018 3.4 Chat très calme elle préfère rester tranquille dans des endroits chauds et confortables.
+3007 Zéphyr Chat 2019 5 Zéphyr est un chat curieux et énergique toujours à la recherche de nouvelles aventures.
+3008 Câline Chat 2021 3.6 Câline adore se blottir contre ses propriétaires toujours en quête de tendresse.
+3009 Vénus Chat 2017 4.8 Chat très intelligent Vénus sait ouvrir les portes et se débrouille pour aller dans des endroits interdits.
+3010 Doudou Chat 2022 3 Très câlin et affectueux Doudou aime dormir près des humains et jouer avec des ficelles.

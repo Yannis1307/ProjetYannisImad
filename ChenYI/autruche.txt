@@ -1,10 +1,10 @@
-5001;Flash;Autruche;2021;110;Autruche vive, aime courir à grande vitesse et se déplacer dans de vastes espaces.
-5002;Sahara;Autruche;2020;95;Calme et majestueuse, Sahara aime se reposer sous l'ombre d'arbres tout en observant son environnement.
-5003;Zulu;Autruche;2022;120;Très curieuse, Zulu adore explorer son enclos et se mélanger avec les autres animaux.
-5004;Tango;Autruche;2019;105;Autruche énergique, Tango aime courir et a un caractère bien affirmé.
-5005;Cactus;Autruche;2021;98;Cactus est un peu timide, mais lorsqu'il se sent en sécurité, il montre son côté sociable.
-5006;Mistral;Autruche;2020;110;Mistral est une autruche rapide et dynamique, elle adore courir sur de longues distances.
-5007;Coco;Autruche;2018;115;Très affectueuse, Coco aime passer du temps à interagir avec les soigneurs et les visiteurs.
-5008;Atlas;Autruche;2022;125;Atlas est une autruche robuste et imposante, toujours prête à relever les défis de son habitat.
-5009;Luna;Autruche;2021;100;Luna est une autruche curieuse et indépendante, elle aime se promener seule dans son enclos.
-5010;Rocky;Autruche;2019;110;Rocky est une autruche fière et observatrice, toujours en quête de nouveaux territoires à explorer.
+5001 Flash Autruche 2021 110 Autruche vive aime courir à grande vitesse et se déplacer dans de vastes espaces.
+5002 Sahara Autruche 2020 95 Calme et majestueuse Sahara aime se reposer sous l'ombre d'arbres tout en observant son environnement.
+5003 Zulu Autruche 2022 120 Très curieuse Zulu adore explorer son enclos et se mélanger avec les autres animaux.
+5004 Tango Autruche 2019 105 Autruche énergique Tango aime courir et a un caractère bien affirmé.
+5005 Cactus Autruche 2021 98 Cactus est un peu timide mais lorsqu'il se sent en sécurité il montre son côté sociable.
+5006 Mistral Autruche 2020 110 Mistral est une autruche rapide et dynamique elle adore courir sur de longues distances.
+5007 Coco Autruche 2018 115 Très affectueuse Coco aime passer du temps à interagir avec les soigneurs et les visiteurs.
+5008 Atlas Autruche 2022 125 Atlas est une autruche robuste et imposante toujours prête à relever les défis de son habitat.
+5009 Luna Autruche 2021 100 Luna est une autruche curieuse et indépendante elle aime se promener seule dans son enclos.
+5010 Rocky Autruche 2019 110 Rocky est une autruche fière et observatrice toujours en quête de nouveaux territoires à explorer.
