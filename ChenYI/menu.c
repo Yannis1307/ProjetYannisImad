@@ -95,6 +95,7 @@ void afficher_animal(Animal a) {
     printf("\033[1;33m🗨️  Commentaire :\033[0m %s\n", a.commentaire);
     printf("\033[1;34m══════════════════════════════════════════════════════════\033[0m\n");
 }
+
 int indice_espece(const char *espece) {
   for (int i = 0; i < nb_especes(); i++) {
     if (strcmp(espece, get_espece(i)) == 0) {
@@ -173,10 +174,10 @@ void rechercher_animaux(const Refuge *refuge) {
   int espece_choisie = -1;
   int type_age = 0;
 
-  printf("Nom (laisser - pour ignorer) : ");
+  printf("📛Nom (Ecrit - pour ignorer) : ");
   scanf("%s", nom_recherche);
 
-  printf("Choisir une espèce (0 pour ignorer) :\n");
+  printf("🦁Choisir une espèce (0 pour ignorer) :\n");
   for (int i = 0; i < nb_especes(); i++) {
     printf("%d - %s\n", i + 1, get_espece(i));
   }
@@ -184,7 +185,7 @@ void rechercher_animaux(const Refuge *refuge) {
   if (espece_choisie < 0 || espece_choisie > nb_especes())
     espece_choisie = 0;
 
-  printf("Type d'âge ? (0=aucun, 1=jeune <2 ans, 2=sénior >10 ans) : ");
+  printf("🎂Type d'âge ? (0=aucun, 1=jeune <2 ans, 2=sénior >10 ans) : ");
   scanf("%d", &type_age);
 
   int trouve = 0;
