@@ -298,46 +298,49 @@ void croquettes(const Refuge *refuge) {
 void menu(Refuge *refuge) {
   int choix;
   do {
-    clrscr();
-    couleur("1;37");
-    printf("\n============================================================\n");
-    printf("                        CY REFUGE ANIMALIER               \n");
-    printf("============================================================\n");
+    clrscr();  // Efface l'écran
+    couleur("1;37");  // Texte blanc sur fond bleu
+    printf("\n================== 🐾 CY REFUGE ANIMALIER 🐾 ==================\n");
     couleur("0");
-    
-    printf("\nNombre d'animaux : %d / %d\n\n", refuge->nb_animaux, MAX_ANIMAUX);
 
-    couleur("36");
-    printf("\n--- MENU REFUGE ---\n");
-    printf("1. Ajouter un animal\n");
-    printf("2. Afficher animaux\n");
-    printf("3. Adopter un animal\n");
-    printf("4. Statistiques d’âge\n");
-    printf("5. Croquettes\n");
-    printf("6. Rechercher un animal\n");
-    printf("0. Quitter\n");
+    printf("\nNombre d'animaux hébergés : %d / %d\n\n", refuge->nb_animaux, MAX_ANIMAUX);
+
+    couleur("36"); // Texte cyan pour les options
+    printf("🐶 1. Ajouter un animal\n");
+    printf("📋 2. Afficher les animaux\n");
+    printf("🏠 3. Adopter un animal\n");
+    printf("📊 4. Statistiques d'âge\n");
+    printf("🍖 5. Calcul du besoin en croquettes\n");
+    printf("🔍 6. Rechercher un animal\n");
+    printf("❌ 0. Quitter\n");
     couleur("0");
-    
-    printf("\n");
-    choix = demanderEntier("Votre choix : ");
 
-       switch (choix) {
-          case 1: ajouter_animal(refuge); break;
-          case 2: afficher_animaux(refuge); break;
-          case 3: adopter_animal(refuge); break;
-          case 4: statistiques_age(refuge); break;
-          case 5: croquettes(refuge); break;
-          case 6: rechercher_animaux(refuge); break;
-          case 0: printf("\nAu revoir !\n"); break;
-          default:
-            couleur("32");
-            printf("Choix invalide. Veuillez réessayer.\n");
-            couleur("0");
-        }
+    printf("\nVotre choix : ");
+    choix = demanderEntier("");
 
-        if (choix != 0) {
-          printf("\nAppuyez sur Entrée pour continuer...");
-          getchar(); getchar();
-        }
-      } while (choix != 0);
- }
+    switch (choix) {
+      case 1: ajouter_animal(refuge); break;
+      case 2: afficher_animaux(refuge); break;
+      case 3: adopter_animal(refuge); break;
+      case 4: statistiques_age(refuge); break;
+      case 5: croquettes(refuge); break;
+      case 6: rechercher_animaux(refuge); break;
+      case 0:
+        couleur("32");
+        printf("\n👋 Merci d'avoir utilisé CY Refuge Animalier ! À bientôt !\n");
+        couleur("0");
+        break;
+      default:
+        couleur("31");
+        printf("❗ Choix invalide. Veuillez réessayer.\n");
+        couleur("0");
+    }
+
+    if (choix != 0) {
+      printf("\nAppuyez sur Entrée pour continuer... ");
+      getchar(); getchar();
+    }
+
+  } while (choix != 0);
+}
+
