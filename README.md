@@ -1,14 +1,22 @@
- CY Refuge Animal - Projet en C
+CY Refuge Animal - Projet en C
+===============================
 
 Ce projet est un programme de gestion d’un refuge animalier écrit en langage C.
 
- Compilation
+Compilation
+-----------
+Assurez-vous d’avoir le compilateur `gcc` et l’outil `make` installés.
 
-Assurez-vous d’avoir 'gcc' et 'make' installés.
+1. Ouvrez un terminal.
+2. Placez-vous dans le dossier du projet.
+3. Tapez la commande suivante pour compiler :
 
-Dans le terminal, placez-vous dans le dossier du projet et tapez : make
----------------------
- Execution
+   make
+
+Cela générera un exécutable nommé `exec`.
+
+Exécution
+---------
 Pour lancer le programme, tapez simplement :
 
    ./exec
