@@ -118,7 +118,7 @@ int generer_id(Refuge *refuge, const char *espece) {
 
 void ajouter_animal(Refuge *refuge) {
   if (refuge->nb_animaux >= MAX_ANIMAUX) {
-    printf("Le refuge est plein (maximum %d animaux).\n", MAX_ANIMAUX);
+    printf("❌ Le refuge est plein (maximum %d animaux).\n", MAX_ANIMAUX);
     return;
   }
 
@@ -223,7 +223,7 @@ void rechercher_animaux(const Refuge *refuge) {
 
 void adopter_animal(Refuge *refuge) {
   int id;
-  printf("ID de l’animal à adopter : ");
+  printf("🐾 ID de l’animal à adopter : ");
   scanf("%d", &id);
 
   int trouve = 0;
@@ -242,7 +242,7 @@ void adopter_animal(Refuge *refuge) {
   }
 
   if (trouve) {
-    printf("Animal adopté ! Mise à jour du fichier...\n");
+    printf("🐶 Animal adopté ! Mise à jour du fichier...\n");
     int indice = indice_espece(espece_supprimee);
     FILE *f = fopen(get_fichier(indice), "w");
     if (f != NULL) {
@@ -256,7 +256,7 @@ void adopter_animal(Refuge *refuge) {
       fclose(f);
     }
   } else {
-    printf("Animal non trouvé.\n");
+    printf("🔍 Animal non trouvé.\n");
   }
 }
 
@@ -275,8 +275,15 @@ void statistiques_age(const Refuge *refuge) {
       q4++;
   }
 
-  printf("0-2 ans : %d\n3-5 ans : %d\n6-10 ans : %d\n+10 ans : %d\n", q1, q2,
-         q3, q4);
+  printf("=====================================\n");
+  printf("      📊 Répartition par âge 📊      \n");
+  printf("=====================================\n");
+  printf("|  0 - 2 ans   : %3d animaux         |\n", q1);
+  printf("|  3 - 5 ans   : %3d animaux         |\n", q2);
+  printf("|  6 - 10 ans  : %3d animaux         |\n", q3);
+  printf("|  +10 ans     : %3d animaux         |\n", q4);
+  printf("=====================================\n");
+  printf("|  Total       : %3d animaux         |\n", refuge->nb_animaux);
 }
 
 void croquettes(const Refuge *refuge) {
@@ -297,32 +304,39 @@ void croquettes(const Refuge *refuge) {
       total += 0.05;
     }
   }
-  printf("Besoin quotidien : %.2f kg\n", total);
+  printf("=====================================\n");
+  printf("   🍖 Besoin quotidien en croquettes   \n");
+  printf("=====================================\n");
+  printf("|  Total : %.2f kg                 |\n", total);
+  printf("=====================================\n");
 }
 
 void menu(Refuge *refuge) {
   int choix;
   do {
     clrscr();  // Efface l'écran
-    couleur("1;37");  // Texte blanc sur fond bleu
-    printf("\n================== 🐾 CY REFUGE ANIMALIER 🐾 ==================\n");
+
+    couleur("1;37"); // Texte blanc
+    printf("+===============================================+\n");
+    printf("|           🐾 CY REFUGE ANIMALIER 🐾           |\n");
+    printf("+===============================================+\n");
     couleur("0");
 
-    printf("\nNombre d'animaux hébergés : %d / %d\n\n", refuge->nb_animaux, MAX_ANIMAUX);
+    printf("| Nombre d'animaux hébergés : %d / %d%-11s|\n", refuge->nb_animaux, MAX_ANIMAUX, "");
+    printf("|-----------------------------------------------|\n");
 
-    couleur("36"); // Texte cyan pour les options
-    printf("🐶 1. Ajouter un animal\n");
-    printf("📋 2. Afficher les animaux\n");
-    printf("🏠 3. Adopter un animal\n");
-    printf("📊 4. Statistiques d'âge\n");
-    printf("🍖 5. Calcul du besoin en croquettes\n");
-    printf("🔍 6. Rechercher un animal\n");
-    printf("❌ 0. Quitter\n");
+    couleur("36"); // Texte cyan
+    printf("| 🐶 1. Ajouter un animal                       |\n");
+    printf("| 📋 2. Afficher les animaux                    |\n");
+    printf("| 🏠 3. Adopter un animal                       |\n");
+    printf("| 📊 4. Statistiques d'âge                      |\n");
+    printf("| 🍖 5. Calcul du besoin en croquettes          |\n");
+    printf("| 🔍 6. Rechercher un animal                    |\n");
+    printf("| ❌ 0. Quitter                                 |\n");
+    printf("+-----------------------------------------------+\n");
+    printf(" Votre choix : ");
+    choix = demanderEntier(""); 
     couleur("0");
-
-    printf("\nVotre choix : ");
-    choix = demanderEntier("");
-
     switch (choix) {
       case 1: ajouter_animal(refuge); break;
       case 2: afficher_animaux(refuge); break;
@@ -337,7 +351,7 @@ void menu(Refuge *refuge) {
         break;
       default:
         couleur("31");
-        printf("❗ Choix invalide. Veuillez réessayer.\n");
+        printf("\n❗ Choix invalide. Veuillez réessayer.\n");
         couleur("0");
     }
 
