@@ -86,11 +86,15 @@ void charger_animaux(Refuge *refuge) {
 }
 
 void afficher_animal(Animal a) {
-  printf("ID: %d | Nom: %s | Espece: %s | Naissance: %d | Poids: %.2f | "
-         "Commentaire: %s\n",
-         a.id, a.nom, a.espece, a.annee_naissance, a.poids, a.commentaire);
+    printf("\n\033[1;34m══════════════════════════════════════════════════════════\033[0m\n");
+    printf("\033[1;33m🐾  ID :\033[0m           %d\n", a.id);
+    printf("\033[1;33m📛  Nom :\033[0m          %s\n", a.nom);
+    printf("\033[1;33m🦁  Espèce :\033[0m       %s\n", a.espece);
+    printf("\033[1;33m🎂  Naissance :\033[0m   %d\n", a.annee_naissance);
+    printf("\033[1;33m⚖️  Poids :\033[0m       %.2f kg\n", a.poids);
+    printf("\033[1;33m🗨️  Commentaire :\033[0m %s\n", a.commentaire);
+    printf("\033[1;34m══════════════════════════════════════════════════════════\033[0m\n");
 }
-
 int indice_espece(const char *espece) {
   for (int i = 0; i < nb_especes(); i++) {
     if (strcmp(espece, get_espece(i)) == 0) {
