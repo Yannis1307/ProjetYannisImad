@@ -1,12 +1,15 @@
 #include "espece.h"
-#include <stdio.h> // pour printf
+#include "gestions.h"
+#include "couleurs.h"
+#include "affichage.h"
+#include "utilitaires.h" 
 
 int nb_especes() {
   return 5;
 }
 
 const char *get_espece(int i) {
-  const char *especes[] = { "Chien", "Chat", "Hamster", "Autruche", "Tortue" };
+  const char *especes[] = { "Chien", "Chat", "Hamster", "Autruche", "Tortue" }; //tableau de chaines de caracteres dans lequel on stock les especes disponibles ce qui necessite de faire un tableau de pointeurs de chaines de caracteres 
   if (i >= 0 && i < nb_especes()) {
     return especes[i];
   } else {
@@ -15,8 +18,8 @@ const char *get_espece(int i) {
   }
 }
 
-const char *get_fichier(int i) {
-  const char *fichiers[] = {
+const char *get_fichier(int i) {  
+  const char *fichiers[] = {  //tableau de chaines de caracteres dans lequel on stock les especes disponibles ce qui necessite de faire un tableau de pointeurs de chaines de caracteres 
     "animaux/chien.txt",
     "animaux/chat.txt",
     "animaux/hamster.txt",
@@ -24,9 +27,9 @@ const char *get_fichier(int i) {
     "animaux/tortue.txt"
   };
 
-  if (i >= 0 && i < nb_especes()) {
+  if (i >= 0 && i < nb_especes()) { //verifie si l'indice est valide et si oui return le nom du fichier correspondant a l'indice 
     return fichiers[i];
-  } else {
+  } else { //sinon affiche un message d'erreur et return un nom de fichier par defaut
     printf("Erreur : indice %d invalide pour les fichiers (max = %d).\n", i, nb_especes() - 1);
     return "animaux/fichier_inconnu.txt";
   }
