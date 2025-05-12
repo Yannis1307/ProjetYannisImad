@@ -1,21 +1,30 @@
 #include "affichage.h"
-#include <stdio.h>
+#include "espece.h"
 #include "gestions.h"
 #include "utilitaires.h"
-#include "espece.h"
+#include <stdio.h>
 
 void afficher_animal(Animal a) {
-    printf("\n\033[1;34m══════════════════════════════════════════════════════════\033[0m\n");
-    printf("\033[1;33m🐾  ID :\033[0m           %d\n", a.id);
-    printf("\033[1;33m📛  Nom :\033[0m          %s\n", a.nom);
-    printf("\033[1;33m🦁  Espèce :\033[0m       %s\n", a.espece);
-    printf("\033[1;33m🎂  Naissance :\033[0m   %d\n", a.annee_naissance);
-    printf("\033[1;33m⚖️  Poids :\033[0m       %.2f kg\n", a.poids);
-    printf("\033[1;33m🗨️  Commentaire :\033[0m %s\n", a.commentaire);
-    printf("\033[1;34m══════════════════════════════════════════════════════════\033[0m\n");
-  //afficher les informations de l'animal a l'ecran et le \33[1;33m permet de mettre en couleur le texte
+  printf(
+      "\n\033[1;"
+      "34m══════════════════════════════════════════════════════════\033[0m\n");
+  printf("\033[1;33m🐾  ID :\033[0m           %d\n", a.id);
+  printf("\033[1;33m📛  Nom :\033[0m          %s\n", a.nom);
+  printf("\033[1;33m🦁  Espèce :\033[0m       %s\n", a.espece);
+  printf("\033[1;33m🎂  Naissance :\033[0m   %d\n", a.annee_naissance);
+  printf("\033[1;33m⚖️  Poids :\033[0m       %.2f kg\n", a.poids);
+  printf("\033[1;33m🗨️  Commentaire :\033[0m %s\n", a.commentaire);
+  printf(
+      "\033[1;"
+      "34m══════════════════════════════════════════════════════════\033[0m\n");
+  // afficher les informations de l'animal a l'ecran et le \33[1;33m permet de
+  // mettre en couleur le texte
 }
-void afficher_animaux(const Refuge *refuge) {
+
+void afficher_animaux(
+    const Refuge
+        *refuge) { // une simple boucle for pour afficher tous les animaux du
+                   // refuge avec la fonction afficher_animal
   for (int i = 0; i < refuge->nb_animaux; i++) {
     afficher_animal(refuge->animaux[i]);
   }
@@ -24,7 +33,7 @@ void afficher_animaux(const Refuge *refuge) {
 void menu(Refuge *refuge) {
   int choix;
   do {
-    clrscr();  // Efface l'écran
+    clrscr(); // Efface l'écran
 
     couleur("1;37"); // Texte blanc
     printf("+===============================================+\n");
@@ -32,7 +41,8 @@ void menu(Refuge *refuge) {
     printf("+===============================================+\n");
     couleur("0");
 
-    printf("| Nombre d'animaux hébergés : %d / %d%-11s|\n", refuge->nb_animaux, MAX_ANIMAUX, "");
+    printf("| Nombre d'animaux hébergés : %d / %d%-11s|\n", refuge->nb_animaux,
+           MAX_ANIMAUX, "");
     printf("|-----------------------------------------------|\n");
 
     couleur("36"); // Texte cyan
@@ -45,29 +55,43 @@ void menu(Refuge *refuge) {
     printf("| ❌ 0. Quitter                                 |\n");
     printf("+-----------------------------------------------+\n");
     printf(" Votre choix : ");
-    choix = demanderEntier(""); 
+    choix = demanderEntier("");
     couleur("0");
     switch (choix) { // Gestion du choix de l'utilisateur
-      case 1: ajouter_animal(refuge); break;
-      case 2: afficher_animaux(refuge); break;
-      case 3: adopter_animal(refuge); break;
-      case 4: statistiques_age(refuge); break;
-      case 5: croquettes(refuge); break;
-      case 6: rechercher_animaux(refuge); break;
-      case 0:
-        couleur("32");
-        printf("\n👋 Merci d'avoir utilisé CY Refuge Animalier ! À bientôt !\n");
-        couleur("0");
-        break;
-      default:
-        couleur("31");
-        printf("\n❗ Choix invalide. Veuillez réessayer.\n");
-        couleur("0");
+    case 1:
+      ajouter_animal(refuge);
+      break;
+    case 2:
+      afficher_animaux(refuge);
+      break;
+    case 3:
+      adopter_animal(refuge);
+      break;
+    case 4:
+      statistiques_age(refuge);
+      break;
+    case 5:
+      croquettes(refuge);
+      break;
+    case 6:
+      rechercher_animaux(refuge);
+      break;
+    case 0:
+      couleur("32");
+      printf("\n👋 Merci d'avoir utilisé CY Refuge Animalier ! À bientôt !\n");
+      couleur("0");
+      break;
+    default:
+      couleur("31");
+      printf("\n❗ Choix invalide. Veuillez réessayer.\n"); //choix invalide car si l utilisateur entre un nombre qui n est pas dans les case precedents alors il ne sera pas valide et donc il y aura un message d erreur
+      couleur("0");
     }
 
     if (choix != 0) {
       printf("\nAppuyez sur Entrée pour continuer... ");
-      getchar(); getchar();
+      getchar();// Le premier getchar() consomme le '\n' laissé par scanf
+      // ca permet de faire une pause avant de revenir au menu
+      getchar();//ce getchar() attend que l utilisateur appuie sur entrée
     }
 
   } while (choix != 0);
