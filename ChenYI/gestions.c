@@ -127,7 +127,7 @@ void ajouter_animal(Refuge *refuge) {
   }
 
   // === Ajout au refuge ===
-  refuge->animaux[refuge->nb_animaux++] = a;
+  refuge->animaux[refuge->nb_animaux++] = a; //on ajoute l animal dans le refuge
 
   // === Sauvegarde dans le fichier ===
   FILE *f = fopen(get_fichier(choix - 1), "a");
