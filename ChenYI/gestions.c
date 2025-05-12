@@ -56,89 +56,110 @@ int generer_id(Refuge *refuge, const char *espece) {
 
 // Fonction pour ajouter un nouvel animal dans le refuge
 void ajouter_animal(Refuge *refuge) {
+  int refuge_plein = 0;
+
   if (refuge->nb_animaux >= MAX_ANIMAUX) {
     printf("❌ Le refuge est plein (maximum %d animaux).\n", MAX_ANIMAUX);
-    return;
+    refuge_plein = 1;
   }
 
-  Animal a;
+  if (refuge_plein == 0) {
+    Animal a;
 
-  // === Nom ===
-  int nom_valide = 0;
-  while (nom_valide == 0) {
-    printf("Nom : ");
-    scanf("%s", a.nom);
+    // === Nom ===
+    int nom_valide = 0;
+    while (nom_valide == 0) {
+      printf("Nom : ");
+      scanf("%s", a.nom);
 
-    nom_valide = 1; // on suppose que le nom est correct
-    for (int i = 0; a.nom[i] != '\0'; i++) {
-      if (a.nom[i] >= '0' && a.nom[i] <= '9') {
-        nom_valide = 0; // erreur : un chiffre est présent
+      nom_valide = 1;
+      int i = 0;
+      while (a.nom[i] != '\0') {
+        if (a.nom[i] >= '0' && a.nom[i] <= '9') {
+          nom_valide = 0;
+        }
+        i = i + 1;
+      }
+
+      if (nom_valide != 1) {
+        printf("❌ Le nom ne doit pas contenir de chiffre.\n");
       }
     }
 
-    if (nom_valide == 0) {
-      printf("❌ Le nom ne doit pas contenir de chiffre.\n");
+    // === Espèce ===
+    printf("Choisir une espèce :\n");
+    int i = 0;
+    while (i < nb_especes()) {
+      printf("%d - %s\n", i + 1, get_espece(i));
+      i = i + 1;
     }
-  }
 
-  // === Espèce ===
-  printf("Choisir une espèce :\n");
-  for (int i = 0; i < nb_especes(); i++) {
-    printf("%d - %s\n", i + 1, get_espece(i));
-  }
+    int choix_valide = 0;
+    int choix = 0;
 
-  int choix = demanderEntier("Votre choix : ");
-  if (choix < 1 || choix > nb_especes()) {
-    printf("❌ Choix invalide.\n");
-    return;
-  }
-
-  copier_texte(a.espece, get_espece(choix - 1));
-  a.id = generer_id(refuge, a.espece);
-
-  // === Année de naissance ===
-  a.annee_naissance = demanderEntier("Année de naissance : ");
-
-  // === Poids ===
-  float poids = 0;
-  int poids_valide = 0;
-  while (poids_valide == 0) {
-    printf("Poids : ");
-    if (scanf("%f", &poids) == 1) {
-      poids_valide = 1;
-    } else {
-      printf("❌ Entrée invalide. Veuillez entrer un poids valide (ex: 12.5).\n");
-      scanf("%*s"); // vide l'entrée incorrecte
+    while (choix_valide == 0) {
+      choix = demanderEntier("Votre choix : ");
+      if (choix >= 1 && choix <= nb_especes()) {
+        choix_valide = 1;
+      } else {
+        printf("❌ Choix invalide. Veuillez entrer un nombre entre 1 et %d.\n", nb_especes());
+      }
     }
+
+    copier_texte(a.espece, get_espece(choix - 1));
+    a.id = generer_id(refuge, a.espece);
+
+    // === Année de naissance ===
+    int annee_actuelle = 2025;
+    int annee_valide = 0;
+    while (annee_valide == 0) {
+      a.annee_naissance = demanderEntier("Année de naissance : ");
+      if (a.annee_naissance <= annee_actuelle) {
+        annee_valide = 1;
+      } else {
+        printf("❌ L'année ne peut pas dépasser %d.\n", annee_actuelle);
+      }
+    }
+
+    // === Poids ===
+    float poids = 0;
+    int poids_valide = 0;
+    while (poids_valide == 0) {
+      printf("Poids : ");
+      if (scanf("%f", &poids) == 1 && poids > 0) {
+        poids_valide = 1;
+      } else {
+        printf("❌ Entrez un poids valide (ex : 12.5).\n");
+        scanf("%*s");
+      }
+    }
+    a.poids = poids;
+    getchar(); // pour consommer le \n
+
+    // === Commentaire (sans validation) ===
+    printf("Commentaire : ");
+    fgets(a.commentaire, TAILLE_COMMENTAIRE, stdin);
+
+    size_t len = strlen(a.commentaire);
+    if (len > 0 && a.commentaire[len - 1] == '\n') {
+      a.commentaire[len - 1] = '\0';
+    }
+
+    // === Ajout au refuge
+    refuge->animaux[refuge->nb_animaux] = a;
+    refuge->nb_animaux = refuge->nb_animaux + 1;
+
+    // === Écriture dans le fichier
+    FILE *fichier = fopen(get_fichier(choix - 1), "a");
+    if (fichier != NULL) {
+      fprintf(fichier, "\n%d %s %s %d %.2f %s", a.id, a.nom, a.espece,a.annee_naissance, a.poids, a.commentaire);
+      fclose(fichier);
+    }
+
+    printf("✅ Animal ajouté avec succès.\n");
   }
-  a.poids = poids;
-
-  // Nettoie le \n restant avant fgets
-  getchar();
-
-  // === Commentaire ===
-  printf("Commentaire : ");
-  fgets(a.commentaire, TAILLE_COMMENTAIRE, stdin);
-
-  // Supprimer le \n à la fin du commentaire s'il existe
-  size_t len = strlen(a.commentaire);
-  if (len > 0 && a.commentaire[len - 1] == '\n') {
-    a.commentaire[len - 1] = '\0';
-  }
-
-  // === Ajout au refuge ===
-  refuge->animaux[refuge->nb_animaux++] = a; //on ajoute l animal dans le refuge
-
-  // === Sauvegarde dans le fichier ===
-  FILE *f = fopen(get_fichier(choix - 1), "a");
-  if (f != NULL) {
-    fprintf(f, "%d %s %s %d %.2f %s\n", a.id, a.nom, a.espece,
-            a.annee_naissance, a.poids, a.commentaire);
-    fclose(f);
-  }
-
-  printf("✅ Animal ajouté avec succès.\n");
 }
+
 
 
 
