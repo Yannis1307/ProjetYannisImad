@@ -5,7 +5,7 @@ Ce projet est un programme de gestion d’un refuge animalier écrit en langage 
 
 Compilation
 -----------
-Assurez-vous d’avoir le compilateur `gcc` et l’outil `make` installés.
+Assurez-vous d’avoir le compilateur 'gcc' et l’outil `make' installés.
 
 1. Ouvrez un terminal.
 2. Placez-vous dans le dossier du projet.
@@ -13,7 +13,7 @@ Assurez-vous d’avoir le compilateur `gcc` et l’outil `make` installés.
 
    make
 
-Cela générera un exécutable nommé `exec`.
+Cela générera un exécutable nommé 'exec'.
 
 Exécution
 ---------
