@@ -22,8 +22,7 @@ void charger_animaux(Refuge *refuge) {
                  f)) { // lit ligne par ligne tant que le refuge n'est pas plein
       Animal a;
       if (sscanf(ligne, "%d %s %s %d %f %[^\n]", &a.id, a.nom, a.espece,
-                 &a.annee_naissance, &a.poids,
-                 a.commentaire) == 6) { //%[^\n] pour lire tout le reste de la ligne jusqu'au saut de ligne
+                 &a.annee_naissance, &a.poids,a.commentaire) == 6) { //%[^\n] pour lire tout le reste de la ligne jusqu'au saut de ligne
         refuge->animaux[refuge->nb_animaux] =
             a; // on ajoute l'animal dans le tableau
         refuge->nb_animaux =refuge->nb_animaux +1; // Incrementer le nombre d'animaux dans le refuge
