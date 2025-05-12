@@ -26,9 +26,7 @@ void charger_animaux(Refuge *refuge) {
                  a.commentaire) == 6) { //%[^\n] pour lire tout le reste de la ligne jusqu'au saut de ligne
         refuge->animaux[refuge->nb_animaux] =
             a; // on ajoute l'animal dans le tableau
-        refuge->nb_animaux =
-            refuge->nb_animaux +
-            1; // Incrementer le nombre d'animaux dans le refuge
+        refuge->nb_animaux =refuge->nb_animaux +1; // Incrementer le nombre d'animaux dans le refuge
       } else {
         printf("Erreur de format dans %s : %s", nom_fichier,
                ligne); // Affiche un message d'erreur si le format de la ligne n'est pas correcte
