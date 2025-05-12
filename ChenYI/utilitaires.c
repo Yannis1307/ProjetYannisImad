@@ -1,289 +1,59 @@
-#include "gestions.h"
-#include "affichage.h"
+#include "utilitaires.h"
 #include "couleurs.h"
 #include "espece.h"
-#include "utilitaires.h"
+#include "affichage.h"
+#include "gestions.h"  
 
-// Fonction pour charger tous les animaux depuis les fichiers
-void charger_animaux(Refuge *refuge) {
-  char ligne[512]; // buffer pour stocker chaque ligne du fichier
+int demanderEntier(const char *message) {
+  int n;      // Variable pour stocker l'entier saisi
+  int result; // Variable pour vérifier si scanf a réussi à lire un entier
 
-  for (int i = 0; i < nb_especes(); i++) { // boucle sur chaque espèce existante
-    const char *nom_fichier =get_fichier(i); // nom fichier va devenir le nom du fichier
-                        // correspondant a l'espece i
-    FILE *f =fopen(nom_fichier,"r");// ce qui permettra ici de l ouvrir en mode lecture "r"
-    if (f == NULL) { // si le fichier n existe pas ou n a pas pu etre ouvert
-      printf("Impossible d'ouvrir %s\n",nom_fichier); // Affiche un message d'avertissement et passe à l'espèce suivante
-      continue;
-    }
+  printf("%s",message); // Affiche le message pour demander à l'utilisateur un entier
+  result = scanf("%d", &n); // Essaie de lire un entier
 
-    while (refuge->nb_animaux < MAX_ANIMAUX &&
-           fgets(ligne, sizeof(ligne),
-                 f)) { // lit ligne par ligne tant que le refuge n'est pas plein
-      Animal a;
-      if (sscanf(ligne, "%d %s %s %d %f %[^\n]", &a.id, a.nom, a.espece,
-                 &a.annee_naissance, &a.poids,a.commentaire) == 6) { //%[^\n] pour lire tout le reste de la ligne jusqu'au saut de ligne
-        refuge->animaux[refuge->nb_animaux] =
-            a; // on ajoute l'animal dans le tableau
-        refuge->nb_animaux =refuge->nb_animaux +1; // Incrementer le nombre d'animaux dans le refuge
-      } else {
-        printf("Erreur de format dans %s : %s", nom_fichier,
-               ligne); // Affiche un message d'erreur si le format de la ligne n'est pas correcte
-      }
-    }
-
-    fclose(f); // fermeture du fichier après lecture
+  if (result == 1) {
+    // Si scanf a réussi à lire un entier (retourne 1 car il aura recupere une seule valeur en gros), on retourne la valeur lue
+    return n;
   }
+
+  // Si scanf n'a pas lu un entier correctement (par exemple, "abc"), on affiche une erreur
+  printf("Entrée invalide. Veuillez entrer un nombre entier.\n");
+
+  // On consomme la mauvaise entrée pour éviter que scanf boucle toujours sur la même erreur
+  scanf("%*s"); // Cette ligne lit un mot invalide sans le stocker (le jette)
+
+  //On rappel la fonction jusqu'a avoir une bonne entree de l'utilisateur 
+  return demanderEntier(message);
 }
 
-// Fonction pour retrouver l'indice d'une espèce à partir de son nom
-int indice_espece(const char *espece) {
-  for (int i = 0; i < nb_especes(); i++) {
-    if (strcmp(espece, get_espece(i)) ==0) { // si la condition est vraie return i donc l indice de l espece
-      return i;
-    }
-  }
-  return -1; // si la condition n est pas vraie return -1
-}
-
-// Fonction pour générer un nouvel ID unique pour une espèce donnée
-int generer_id(Refuge *refuge, const char *espece) {
-  int max = 0; // ID maximal trouvé pour l'espèce
-  for (int i = 0; i < refuge->nb_animaux; i++) {
-    if (indice_espece(refuge->animaux[i].espece) ==
-        indice_espece(espece)) { // on vérifie si l'espèce correspond
-      if (refuge->animaux[i].id > max)
-        max = refuge->animaux[i].id; // on garde le plus grand ID trouvé
-    }
-  }
-  return max + 1; // retourne un ID unique (le suivant)
-}
-
-// Fonction pour ajouter un nouvel animal dans le refuge
-void ajouter_animal(Refuge *refuge) {
-  if (refuge->nb_animaux >= MAX_ANIMAUX) { // vérifie si le refuge est plein
-    printf("❌ Le refuge est plein (maximum %d animaux).\n", MAX_ANIMAUX);
-    return;
-  }
-
-  Animal a; // nouvelle structure pour stocker l'animal à ajouter
-
-  printf("Nom : ");
-  scanf("%s", a.nom); // récupère le nom
-
-  printf("Choisir une espèce :\n");
-  for (int i = 0; i < nb_especes(); i++) { // affichage des espèces disponibles
-    printf("%d - %s\n", i + 1, get_espece(i));
-  }
-
-  int choix;
-  scanf("%d", &choix);                     // utilisateur choisit une espèce
-  if (choix < 1 || choix > nb_especes()) { // validation du choix
-    printf("Choix invalide.\n");
-    return;
-  }
-
-  copier_texte(
-      a.espece,
-      get_espece(choix - 1)); // copie le nom de l'espèce dans la structure
-  a.id = generer_id(refuge, a.espece); // génère un ID unique pour cet animal
-
-  printf("Année de naissance : ");
-  scanf("%d", &a.annee_naissance);
-
-  printf("Poids : ");
-  scanf("%f", &a.poids);
-
-  // Nettoyer le \n restant dans le buffer après scanf
-  getchar();
-
-  printf("Commentaire : ");
-  fgets(a.commentaire, TAILLE_COMMENTAIRE,
-        stdin); // récupère le commentaire complet
-
-  // Supprimer le \n éventuel à la fin du commentaire
-  size_t len = strlen(a.commentaire);
-  if (len > 0 && a.commentaire[len - 1] == '\n') {
-    a.commentaire[len - 1] = '\0';
-  }
-
-  refuge->animaux[refuge->nb_animaux++] =
-      a; // ajoute l'animal et incrémente le compteur
-
-  FILE *f = fopen(get_fichier(choix - 1),
-                  "a"); // ouverture en ajout dans le fichier correspondant
-  if (f != NULL) {
-    fprintf(f, "%d %s %s %d %.2f %s\n", a.id, a.nom, a.espece,
-            a.annee_naissance, a.poids,
-            a.commentaire); // écrit les infos de l'animal
-    fclose(f);
-  }
-
-  printf("Animal ajouté avec succès.\n");
-}
-
-// Fonction de recherche d'animaux selon plusieurs critères (nom, espèce,
-// tranche d'âge)
-void rechercher_animaux(const Refuge *refuge) {
-  char nom_recherche[TAILLE_NOM];
-  int espece_choisie = -1;
-  int type_age = 0;
-
-  printf("📛Nom (Ecrit - pour ignorer) : ");
-  scanf("%s", nom_recherche);
-
-  // Vérifie si le nom contient un chiffre
-  for (int i = 0; nom_recherche[i] != '\0'; i++) {
-    if (nom_recherche[i] >= '0' && nom_recherche[i] <= '9') {
-      printf("❌ Le nom ne doit pas contenir de chiffre.\n");
-      return;
-    }
-  }
-
-  printf("🦁Choisir une espèce (0 pour ignorer) :\n");
-  for (int i = 0; i < nb_especes(); i++) {
-    printf("%d - %s\n", i + 1,
-           get_espece(i)); // afficher les options disponibles
-  }
-  scanf("%d", &espece_choisie);
-  if (espece_choisie < 0 || espece_choisie > nb_especes())
-    espece_choisie = 0;
-
-  printf("🎂Type d'âge ? (0=aucun, 1=jeune <2 ans, 2=sénior >10 ans) : ");
-  scanf("%d", &type_age);
-
-  int trouve = 0;
-
-  for (int i = 0; i < refuge->nb_animaux; i++) {
-    Animal a = refuge->animaux[i];
-    int age = calculer_age(a.annee_naissance);
-
-    int ok_nom = 1;
-    if (nom_recherche[0] != '-' && nom_recherche[0] != '\0') {
-      ok_nom = (strcmp(a.nom, nom_recherche) == 0);
-    }
-
-    int ok_espece = 1;
-    if (espece_choisie > 0) {
-      ok_espece = (indice_espece(a.espece) == espece_choisie - 1);
-    }
-
-    int ok_age = 1;
-    if (type_age == 1 && age >= 2)
-      ok_age = 0;
-    if (type_age == 2 && age <= 10)
-      ok_age = 0;
-
-    if (ok_nom && ok_espece && ok_age) {
-      afficher_animal(a);
-      trouve = 1;
-    }
-  }
-
-  if (trouve==0) {
-    printf("Aucun animal ne correspond aux critères.\n");
-  }
-}
-
-// Fonction permettant d'adopter un animal (suppression par ID)
-void adopter_animal(Refuge *refuge) {
-  int id;
-  printf("🐾 ID de l’animal à adopter : ");
-  scanf("%d", &id);
-
-  int trouve = 0;
-  char espece_supprimee[TAILLE_NOM];
-
-  for (int i = 0; i < refuge->nb_animaux; i++) {
-    if (refuge->animaux[i].id == id) { // si l'animal avec l'ID existe
-      copier_texte(espece_supprimee,
-                   refuge->animaux[i].espece); // sauvegarde de l'espèce
-      for (int j = i; j < refuge->nb_animaux - 1; j++) {
-        refuge->animaux[j] =
-            refuge->animaux[j + 1]; // décalage des éléments vers la gauche
-      }
-      refuge->nb_animaux--; // décrémente le nombre d'animaux
-      trouve = 1;
-      break;
-    }
-  }
-
-  if (trouve == 1) { // si l'animal a été trouvé et supprimé
-    printf("🐶 Animal adopté ! Mise à jour du fichier...\n");
-    int indice = indice_espece(espece_supprimee);
-    FILE *f =
-        fopen(get_fichier(indice),
-              "w"); // on écrase le fichier de l'espèce pour le mettre à jour
-    if (f != NULL) {
-      for (int i = 0; i < refuge->nb_animaux; i++) {
-        if (indice_espece(refuge->animaux[i].espece) == indice) {
-          Animal a = refuge->animaux[i];
-          fprintf(f, "%d %s %s %d %f %s\n", a.id, a.nom, a.espece,
-                  a.annee_naissance, a.poids, a.commentaire);
-        }
-      }
-      fclose(f);
-    }
+int calculer_age(int annee) { // Fonction pour calculer l'âge d'un animal à partir de son année de naissance
+  if (annee == 0) {
+    printf("Erreur: l'année de naissance ne peut pas être 0.\n");
+    return 0;
+  } else if (annee < 0) {
+    printf("Erreur: l'année de naissance ne peut pas être négative.\n");
+    return 0;
+  } else if (annee > 2025) {
+    printf("Erreur: l'année de naissance ne peut pas être supérieure à 2025.\n");
+    return 0;
   } else {
-    printf("🔍 Animal non trouvé.\n"); // si l'ID n'existe pas
+    return 2025 - annee;
   }
 }
 
-// Fonction de statistiques : répartition des animaux par tranche d'âge
-void statistiques_age(const Refuge *refuge) {
-  int q1 = 0, q2 = 0, q3 = 0, q4 = 0; // compteurs pour chaque tranche
-
-  for (int i = 0; i < refuge->nb_animaux; i++) {
-    int age = calculer_age(refuge->animaux[i].annee_naissance);
-    if (age <= 2){
-      q1++;
-    }
-    else if (age <= 5){
-      q2++;
-    }
-    else if (age <= 10){
-      q3++;
-    }
-    else{
-      q4++;
-    }
-  }
-
-  // affichage formaté des statistiques
-  printf("=====================================\n");
-  printf("      📊 Répartition par âge 📊      \n");
-  printf("=====================================\n");
-  printf("|  0 - 2 ans   : %3d animaux         |\n", q1);
-  printf("|  3 - 5 ans   : %3d animaux         |\n", q2);
-  printf("|  6 - 10 ans  : %3d animaux         |\n", q3);
-  printf("|  +10 ans     : %3d animaux         |\n", q4);
-  printf("=====================================\n");
-  printf("|  Total       : %3d animaux         |\n", refuge->nb_animaux);
+void copier_texte(char *dest, const char *src) { 
+  strcpy(dest, src); // Utilisation de strcpy pour copier le texte de src vers dest
 }
 
-// Fonction de calcul du besoin total en croquettes selon l'espèce et l'âge
-void croquettes(const Refuge *refuge) {
-  float total = 0.0; // accumulateur pour le poids total de croquettes
-  for (int i = 0; i < refuge->nb_animaux; i++) {
-    Animal a = refuge->animaux[i];
-    int age = calculer_age(a.annee_naissance);
-    if (a.espece[0] == 'H') // Hamster
-      total += 0.02;
-    else if (a.espece[0] == 'A') // Autruche
-      total += 2.5;
-    else if (a.espece[0] == 'C') { // Chien
-      if (age < 2)
-        total += 0.5;
-      else
-        total += 0.1 * a.poids;
-    } else if (a.espece[0] == 'T') { // Tortue
-      total += 0.05;
-    }
+int contient(const char *texte, const char *mot) {
+  // On utilise la fonction strstr() qui cherche si 'mot' est présent dans 'texte'
+  char *resultat = strstr(texte, mot);
+
+  // Si le mot est trouvé, strstr() retourne un pointeur vers la position dans 'texte'
+  // Sinon, elle retourne NULL
+  if (resultat != NULL) {
+    return 1; // Le mot a été trouvé dans le texte
+  } else {
+    return 0; // Le mot n’a pas été trouvé
   }
-  // affichage du besoin total
-  printf("=====================================\n");
-  printf("   🍖 Besoin quotidien en croquettes   \n");
-  printf("=====================================\n");
-  printf("|  Total : %.2f kg                  |\n", total);
-  printf("=====================================\n");
 }
