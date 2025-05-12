@@ -12,13 +12,9 @@ void charger_animaux(Refuge *refuge) {
     const char *nom_fichier =
         get_fichier(i); // nom fichier va devenir le nom du fichier
                         // correspondant a l'espece i
-    FILE *f =
-        fopen(nom_fichier,
-              "r");  // ce qui permettra ici de l ouvrir en mode lecture "r"
+    FILE *f =fopen(nom_fichier,"r");// ce qui permettra ici de l ouvrir en mode lecture "r"
     if (f == NULL) { // si le fichier n existe pas ou n a pas pu etre ouvert
-      printf("Impossible d'ouvrir %s\n",
-             nom_fichier); // Affiche un message d'avertissement et passe à
-                           // l'espèce suivante
+      printf("Impossible d'ouvrir %s\n",nom_fichier); // Affiche un message d'avertissement et passe à l'espèce suivante
       continue;
     }
 
@@ -27,8 +23,8 @@ void charger_animaux(Refuge *refuge) {
                  f)) { // lit ligne par ligne tant que le refuge n'est pas plein
       Animal a;
       if (sscanf(ligne, "%d %s %s %d %f %[^\n]", &a.id, a.nom, a.espece,
-                 &a.annee_naissance, &a.poids, a.commentaire) ==
-          6) { //%[^] pour lire tout le reste de la ligne jusqu'au saut de ligne
+                 &a.annee_naissance, &a.poids,
+                 a.commentaire) == 6) { //%[^\n] pour lire tout le reste de la ligne jusqu'au saut de ligne
         refuge->animaux[refuge->nb_animaux] =
             a; // on ajoute l'animal dans le tableau
         refuge->nb_animaux =
@@ -36,8 +32,7 @@ void charger_animaux(Refuge *refuge) {
             1; // Incrementer le nombre d'animaux dans le refuge
       } else {
         printf("Erreur de format dans %s : %s", nom_fichier,
-               ligne); // Affiche un message d'erreur si le format de la ligne
-                       // n'est pas correcte
+               ligne); // Affiche un message d'erreur si le format de la ligne n'est pas correcte
       }
     }
 
@@ -152,7 +147,8 @@ void rechercher_animaux(const Refuge *refuge) {
 
   printf("🦁Choisir une espèce (0 pour ignorer) :\n");
   for (int i = 0; i < nb_especes(); i++) {
-    printf("%d - %s\n", i + 1, get_espece(i)); // afficher les options disponibles
+    printf("%d - %s\n", i + 1,
+           get_espece(i)); // afficher les options disponibles
   }
   scanf("%d", &espece_choisie);
   if (espece_choisie < 0 || espece_choisie > nb_especes())
@@ -189,11 +185,10 @@ void rechercher_animaux(const Refuge *refuge) {
     }
   }
 
-  if (!trouve) {
+  if (trouve==0) {
     printf("Aucun animal ne correspond aux critères.\n");
   }
 }
-
 
 // Fonction permettant d'adopter un animal (suppression par ID)
 void adopter_animal(Refuge *refuge) {
@@ -245,14 +240,18 @@ void statistiques_age(const Refuge *refuge) {
 
   for (int i = 0; i < refuge->nb_animaux; i++) {
     int age = calculer_age(refuge->animaux[i].annee_naissance);
-    if (age <= 2)
+    if (age <= 2){
       q1++;
-    else if (age <= 5)
+    }
+    else if (age <= 5){
       q2++;
-    else if (age <= 10)
+    }
+    else if (age <= 10){
       q3++;
-    else
+    }
+    else{
       q4++;
+    }
   }
 
   // affichage formaté des statistiques
